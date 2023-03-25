@@ -30,7 +30,7 @@ spec:
     #       memory: "1000Mi"
     #       cpu: "500m"
     - name: kaniko
-      image: gcr.io/kaniko-project/executor:debug-v0.19.0
+      image: gcr.io/kaniko-project/executor:debug
       imagePullPolicy: Always
       command:
         - sleep
