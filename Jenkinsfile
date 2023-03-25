@@ -9,7 +9,7 @@ pipeline {
   }
 
   environment {
-    NAME = "priyankapractice"
+    NAME = "priyankapractices"
     VERSION = "${env.BUILD_ID}"
     IMAGE_REPO = "sarthaksatish"
     // ARGOCD_TOKEN = credentials('argocd-token')
@@ -23,15 +23,15 @@ pipeline {
         echo 'This stage is a sample placeholder'
       }
     }
-    stage('gradle build') {
-      steps {
-        script{
-            container(name: 'gradle'){
-                sh 'gradle clean build'
-            }
-        }
-      }
-    }
+    // stage('gradle build') {
+    //   steps {
+    //     script{
+    //         container(name: 'gradle'){
+    //             sh 'gradle clean build'
+    //         }
+    //     }
+    //   }
+    // }
     
     stage('Build Image') {
       steps {
