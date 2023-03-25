@@ -52,8 +52,6 @@ pipeline {
         script{
             container(name: 'helm3'){
                 sh """
-                  helm list
-                  helm upgrade
                   helm install priyankapractice helm-charts --set image.tag=${VERSION}
                 """
                 }
