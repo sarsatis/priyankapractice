@@ -48,8 +48,13 @@ spec:
     #       memory: "1000Mi"
     #       cpu: "500m"
     - name: gradle
-      image: gradle:latest 
-      tty: true
+      image: gradle
+      imagePullPolicy: Always
+      ttyEnabled: true
+      command:
+        - sleep
+      args:
+        - 99d
       resources:
         requests:
           memory: "128Mi"
