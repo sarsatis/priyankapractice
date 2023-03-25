@@ -9,7 +9,7 @@ pipeline {
   }
 
   environment {
-    NAME = "priyankapractices"
+    NAME = "priyankapractice"
     VERSION = "${env.BUILD_ID}"
     IMAGE_REPO = "sarthaksatish"
     // ARGOCD_TOKEN = credentials('argocd-token')

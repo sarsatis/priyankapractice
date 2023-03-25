@@ -6,7 +6,8 @@ metadata:
     jenkins: jenkins-pipeline
 spec:
   volumes:
-    - name: jenkins-docker-cfg
+  - name: kaniko-secret
+    secret:
       secretName: dockercred
       items:
       - key: .dockerconfigjson
@@ -38,7 +39,7 @@ spec:
       tty: true
       volumeMounts:
         - mountPath: /kaniko/.docker 
-          name: jenkins-docker-cfg
+          name: kaniko-secret
       resources:
         requests:
           memory: "128Mi"
