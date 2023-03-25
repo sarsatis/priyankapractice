@@ -43,10 +43,10 @@ spec:
       resources:
         requests:
           memory: "128Mi"
-          cpu: "50m"
+          cpu: "500m"
         limits:
-          memory: "200Mi"
-          cpu: "100m"  
+          memory: "1000Mi"
+          cpu: "500m"
     - name: gradle
       image: gradle
       imagePullPolicy: Always
@@ -58,10 +58,10 @@ spec:
       resources:
         requests:
           memory: "128Mi"
-          cpu: "50m"
+          cpu: "500m"
         limits:
-          memory: "200Mi"
-          cpu: "100m"    
+          memory: "1000Mi"
+          cpu: "500m"  
     - name: helm3
       image: justinrlee/helm3:latest
       imagePullPolicy: Always
@@ -73,7 +73,7 @@ spec:
       resources:
         requests:
           memory: "128Mi"
-          cpu: "50m"
+          cpu: "500m"
         limits:
-          memory: "200Mi"
-          cpu: "100m"      
+          memory: "1000Mi"
+          cpu: "500m"      
