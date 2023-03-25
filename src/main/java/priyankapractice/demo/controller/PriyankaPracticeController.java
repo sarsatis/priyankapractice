@@ -9,5 +9,11 @@ public class PriyankaPracticeController {
     @GetMapping("/priyanka")
     public  String  priyankaPractice(){
         return "priyankaPractice";
-    }   
+    }
+    
+    @GetMapping("/sarthak")
+    public String sarthakMental(){
+        return "sarthakMental";
+    }
 }
+
