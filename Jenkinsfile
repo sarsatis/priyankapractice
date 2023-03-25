@@ -47,6 +47,21 @@ pipeline {
             }
           }
 
+    stage('Helm deployments') {
+      steps {
+        script{
+            container(name: 'helm3'){
+                sh """
+                  helm list
+                  helm upgrade
+                  helm install priyankapractice helm-charts --set image.tag=${VERSION}
+                """
+                }
+              }
+              
+            }
+          }     
+
 
     // stage('Clone/Pull Repo') {
     //   steps {

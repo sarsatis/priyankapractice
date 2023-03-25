@@ -61,4 +61,19 @@ spec:
           cpu: "500m"
         limits:
           memory: "1000Mi"
+          cpu: "500m"  
+    - name: helm3
+      image: justinrlee/helm3:latest
+      imagePullPolicy: Always
+      ttyEnabled: true
+      command:
+        - sleep
+      args:
+        - 99d
+      resources:
+        requests:
+          memory: "128Mi"
+          cpu: "500m"
+        limits:
+          memory: "1000Mi"
           cpu: "500m"      
