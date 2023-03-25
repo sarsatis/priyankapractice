@@ -5,13 +5,12 @@ metadata:
   labels:
     jenkins: jenkins-pipeline
 spec:
-  # volumes:
-  #   - name: sharedvolume
-  #     emptyDir: {}
-  #   - name: jenkins-docker-cfg
-  #     secretName: mysecret
-  #     subPath: config.json
-  #     optional: true
+  volumes:
+    - name: jenkins-docker-cfg
+      secretName: dockercred
+      items:
+      - key: .dockerconfigjson
+        path: config.json
   serviceAccountName: jenkins
   securityContext:
     runAsUser: 0
@@ -37,6 +36,9 @@ spec:
         - sleep
         - "1000"
       tty: true
+      volumeMounts:
+        - mountPath: /kaniko/.docker 
+          name: jenkins-docker-cfg
       resources:
         requests:
           memory: "128Mi"
