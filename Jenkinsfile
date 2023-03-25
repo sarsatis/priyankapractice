@@ -39,7 +39,7 @@ pipeline {
             container(name: 'kaniko'){
                 sh """
                   printenv
-                  /kaniko/executor --force --dockerfile Dockerfile --context `pwd` --destination ${IMAGE_REPO}/${NAME}:${VERSION}
+                  /kaniko/executor --context `pwd` --destination ${IMAGE_REPO}/${NAME}:${VERSION}
                 """
                 }
               }
