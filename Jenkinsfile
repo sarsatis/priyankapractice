@@ -23,7 +23,7 @@ pipeline {
         echo 'This stage is a sample placeholder'
       }
     }
-    stage('Unit Tests') {
+    stage('gradle build') {
       steps {
         script{
             container(name: 'gradle'){
