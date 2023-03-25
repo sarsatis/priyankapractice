@@ -1,39 +1,39 @@
-apiVersion: rbac.authorization.k8s.io/v1
-kind: Role
-metadata:
-  creationTimestamp: null
-  name: priyankarole
-rules:
-- apiGroups:
-  - ""
-  resources:
-  - services
-  - pods
-  - secrets
-  verbs:
-  - get
-  - create
-  - watch
-  - list
-  - delete
-- apiGroups:
-  - apps
-  resources:
-  - deployments
-  verbs:
-  - get
-  - create
-  - watch
-  - list
-  - delete
-- apiGroups:
-  - rbac.authorization.k8s.io
-  resources:
-  - roles
-  - rolebindings
-  verbs:
-  - get
-  - create
-  - watch
-  - list
-  - delete
+# apiVersion: rbac.authorization.k8s.io/v1
+# kind: Role
+# metadata:
+#   creationTimestamp: null
+#   name: priyankarole
+# rules:
+# - apiGroups:
+#   - ""
+#   resources:
+#   - services
+#   - pods
+#   - secrets
+#   verbs:
+#   - get
+#   - create
+#   - watch
+#   - list
+#   - delete
+# - apiGroups:
+#   - apps
+#   resources:
+#   - deployments
+#   verbs:
+#   - get
+#   - create
+#   - watch
+#   - list
+#   - delete
+# - apiGroups:
+#   - rbac.authorization.k8s.io
+#   resources:
+#   - roles
+#   - rolebindings
+#   verbs:
+#   - get
+#   - create
+#   - watch
+#   - list
+#   - delete
