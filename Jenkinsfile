@@ -71,7 +71,6 @@ pipeline {
           }
         }
       }
-    }
 
     stage('Commit & Push') {
       steps {
