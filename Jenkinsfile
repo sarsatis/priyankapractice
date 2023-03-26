@@ -23,29 +23,29 @@ pipeline {
         echo 'This stage is a sample placeholder'
       }
     }
-    // stage('gradle build') {
-    //   steps {
-    //     script{
-    //         container(name: 'gradle'){
-    //             sh 'gradle clean build'
-    //         }
-    //     }
-    //   }
-    // }
+    stage('gradle build') {
+      steps {
+        script{
+            container(name: 'gradle'){
+                sh 'gradle clean build'
+            }
+        }
+      }
+    }
     
-    // stage('Build Image') {
-    //   steps {
-    //     script{
-    //         container(name: 'kaniko'){
-    //             sh """
-    //               printenv
-    //               /kaniko/executor --context `pwd` --destination ${IMAGE_REPO}/${NAME}:${VERSION}
-    //             """
-    //             }
-    //           }
+    stage('Build Image') {
+      steps {
+        script{
+            container(name: 'kaniko'){
+                sh """
+                  printenv
+                  /kaniko/executor --context `pwd` --destination ${IMAGE_REPO}/${NAME}:${VERSION}
+                """
+                }
+              }
               
-    //         }
-    //       }
+            }
+        
 
     // stage('Helm deployments') {
     //   steps {
