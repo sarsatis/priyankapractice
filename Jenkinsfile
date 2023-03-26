@@ -45,6 +45,8 @@ pipeline {
               }
               
             }
+    }
+    
         
 
     // stage('Helm deployments') {
@@ -95,6 +97,7 @@ pipeline {
         }
       }
     }
+
 
     // stage('Raise PR') {
     //   steps {
