@@ -77,7 +77,7 @@ pipeline {
     stage('Commit & Push') {
       steps {
         script {
-          dir("helm-charts/charts/priyankalearnings") {
+          dir("helm-charts/manifests/${NAME}/") {
             withCredentials([usernamePassword(credentialsId: 'githubpat',
                   usernameVariable: 'username',
                   passwordVariable: 'password')]){
