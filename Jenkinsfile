@@ -63,58 +63,39 @@ pipeline {
     //       }     
 
 
-    // stage('Clone/Pull Repo') {
-    //   steps {
-    //     script {
-    //       if (fileExists('gitops-argocd')) {
+    stage('Clone/Pull Repo') {
+      steps {
+        script {
+            sh 'git clone https://github.com/sarsatis/helm-charts'
+            sh 'ls -ltr'
+          }
+        }
+      }
+    }
 
-    //         echo 'Cloned repo already exists - Pulling latest changes'
-
-    //         dir("gitops-argocd") {
-    //           sh 'git pull'
-    //         }
-
-    //       } else {
-    //         echo 'Repo does not exists - Cloning the repo'
-    //         sh 'git clone https://github.com/sarsatis/gitops-argocd'
-    //       }
-    //     }
-    //   }
-    // }
-    
-    // stage('Update Manifest') {
-    //   steps {
-    //     dir("gitops-argocd/jenkins-demo") {
-         
-    //     }
-    //   }
-    // }
-
-    // stage('Commit & Push') {
-    //   steps {
-    //     script {
-    //       dir("gitops-argocd/jenkins-demo") {
-    //         withCredentials([usernamePassword(credentialsId: 'githubpat',
-    //               usernameVariable: 'username',
-    //               passwordVariable: 'password')]){
-    //         encodedPassword = URLEncoder.encode("$password",'UTF-8')
-    //         echo "sa ${encodedPassword}"
-    //         sh "git config --global user.email 'jenkins@ci.com'"
-    //         sh "git remote set-url origin https://${username}:${encodedPassword}@github.com/${username}/gitops-argocd.git"
-    //         sh 'git checkout -b feature-test'
-    //         sh 'git pull origin feature-test'
-    //         sh 'sed -i "s#sarthaksatish.*#${IMAGE_REPO}/${NAME}:${VERSION}#g" deployment.yaml'
-    //         sh 'cat deployment.yaml'
-    //         sh 'git add -A'
-    //         sh 'git commit -am "Updated image version for Build - $VERSION"'
-    //         echo 'push started'
-    //         sh "git push -u origin feature-test"
-    //         }
-    //         echo 'push complete'
-    //       }
-    //     }
-    //   }
-    // }
+    stage('Commit & Push') {
+      steps {
+        script {
+          dir("charts/priyankalearnings") {
+            withCredentials([usernamePassword(credentialsId: 'githubpat',
+                  usernameVariable: 'username',
+                  passwordVariable: 'password')]){
+            encodedPassword = URLEncoder.encode("$password",'UTF-8')
+            echo "sa ${encodedPassword}"
+            sh "git config --global user.email 'jenkins@ci.com'"
+            sh "git remote set-url origin https://${username}:${encodedPassword}@github.com/${username}/helm-charts.git"
+            sh 'sed -i "s#tag:.*#tag: ${VERSION}#g" values.yaml'
+            sh 'cat values.yaml'
+            sh 'git add values.yaml'
+            sh 'git commit -am "Updated image version for Build - $VERSION"'
+            echo 'push started'
+            sh "git push -u origin main"
+            }
+            echo 'push complete'
+          }
+        }
+      }
+    }
 
     // stage('Raise PR') {
     //   steps {
