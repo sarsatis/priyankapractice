@@ -54,7 +54,7 @@ pipeline {
     //             sh """
     //             helm list
 
-    //             helm upgrade priyankapractice helm-charts --set image.tag=${VERSION}
+    //             helm upgrade priyankapractice helm-charts-local --set image.tag=${VERSION}
     //             """
     //             }
     //           }
